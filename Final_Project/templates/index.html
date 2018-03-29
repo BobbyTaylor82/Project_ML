@@ -77,13 +77,11 @@
 
 <body id="myPage">
     <div class="container-fluid bg-1 text-center" style="height:560px;">
-        <h1>Check to see if you qualify for a loan</h1>
+        <h1>Verify borrower's loan qualification</h1>
 
     </div>
     <div class="container-fluid bg-2">
-        <h4>
-            <center>Please fill the form to continue</center>
-        </h4>
+        
         <form class="form-horizontal" method="POST" action="/send" role="form" name="form">
 
             <div class="form-group">
@@ -324,10 +322,10 @@
 
             if (modelPredict === 1) {
 
-                alert("Sorry, You dont qualify for a " + loanAMOUNT + " loan. " +
-                    "Try to see if you qualify for a lower loan amount.")
+                alert("DENIED for " + loanAMOUNT  + ". "+
+                    "Try again if borrower qualify for a lower loan amount.")
             } else {
-                alert("Congradulations, You do qualify for a "  + loanAMOUNT + " loan. " + "Your next step would be to contact an agent.")
+                alert("APPROVED for "  + loanAMOUNT + "!")
             }
 
 
