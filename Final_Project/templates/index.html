@@ -81,7 +81,7 @@
 
     </div>
     <div class="container-fluid bg-2">
-        
+
         <form class="form-horizontal" method="POST" action="/send" role="form" name="form">
 
             <div class="form-group">
@@ -212,7 +212,7 @@
                 <img src="https://i.imgur.com/1Ea42db.png" alt="Image" width="120" height="120">
             </div>
             <div class="col-sm-4">
-                <h3>Start using your funds today</h3>
+                <h3>Start using funds today</h3>
                 <br>
                 <img src="https://i.imgur.com/l288prh.png" alt="Image" width="120" height="120">
             </div>
@@ -222,72 +222,6 @@
     </div>
 
 
-    <div class="container-fluid bg-4 text-center">
-        <div class="col-sm-3">
-            <p class="text-center">
-                <strong>Name</strong>
-            </p>
-            <br>
-            <a href="#demo" data-toggle="collapse">
-                <img src="https://cdn.pixabay.com/photo/2017/09/08/19/03/light-2729771_960_720.png" class="img-circle person" alt="Random Name"
-                    style="height: 120px; width: 120px;">
-            </a>
-            <div id="demo" class="collapse">
-                <p>Data Analyst</p>
-                <p>Github link</p>
-                <p>UT Databootcamp</p>
-            </div>
-        </div>
-
-        <div class="col-sm-3">
-            <p class="text-center">
-                <strong>Name</strong>
-            </p>
-            <br>
-            <a href="#demo" data-toggle="collapse">
-                <img src="https://cdn.pixabay.com/photo/2017/09/08/19/03/light-2729771_960_720.png" class="img-circle person" alt="Random Name"
-                    style="height: 120px; width: 120px;">
-            </a>
-            <div id="demo" class="collapse">
-                <p>Data Analyst</p>
-                <p>Github link</p>
-                <p>UT Databootcamp</p>
-            </div>
-        </div>
-       
-        <div class="col-sm-3">
-            <p class="text-center">
-                <strong>Name</strong>
-            </p>
-            <br>
-            <a href="#demo3" data-toggle="collapse">
-                <img src="https://cdn.pixabay.com/photo/2017/09/08/19/03/light-2729771_960_720.png" class="img-circle person" alt="Random Name"
-                    style="height: 120px; width: 120px;">
-            </a>
-            <div id="demo3" class="collapse">
-                <p>Data Analyst</p>
-                <p>Github link</p>
-                <p>UT Databootcamp</p>
-            </div>
-        </div>
-
-        <div class="col-sm-3">
-            <p class="text-center">
-                <strong>Name</strong>
-            </p>
-            <br>
-            <a href="#demo4" data-toggle="collapse">
-                <img src="https://cdn.pixabay.com/photo/2017/09/08/19/03/light-2729771_960_720.png" class="img-circle person" alt="Random Name"
-                    style="height: 120px; width: 120px;">
-            </a>
-            <div id="demo4" class="collapse">
-                <p>Data Analyst</p>
-                <p>Github link</p>
-                <p>UT Databootcamp</p>
-            </div>
-        </div>
-    </div>
-    </div>
     <!-- Footer -->
     <footer class="text-center">
         <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
@@ -296,7 +230,7 @@
         <br>
         <br>
         <h3>Please visit our
-            <a href="https://github.com" data-toggle="tooltip" title="project link">github project page</a>
+            <a href="https://github.com/BobbyTaylor82/Project_ML" data-toggle="tooltip" title="project link">github project page</a>
         </h3>
     </footer>
 
@@ -316,16 +250,16 @@
                 minimumFractionDigits: 2,
             });
 
-           var loanAMOUNT = formatter.format(loanAMOUNT)
+            var loanAMOUNT = formatter.format(loanAMOUNT)
 
             var modelPredict = data[0]["vectorsANDPREDICT"]["prediction"]
 
             if (modelPredict === 1) {
 
-                alert("DENIED for " + loanAMOUNT  + ". "+
+                alert("DENIED for " + loanAMOUNT + ". " +
                     "Try again if borrower qualify for a lower loan amount.")
             } else {
-                alert("APPROVED for "  + loanAMOUNT + "!")
+                alert("APPROVED for " + loanAMOUNT + "!")
             }
 
 
