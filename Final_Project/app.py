@@ -28,62 +28,72 @@ def index ():
 @app.route("/send", methods=["GET", "POST"])
 def predictions():
 
-    mongo.db.resultsDB.remove()
-
-    if request.method == "POST":
-        creditPolicy = request.form['creditPolicy']
-        purpose =  request.form['purpose']
-        interestRate  =  request.form['interestRate']
-        installment =  request.form['installment']
-        logAnnual =  request.form['logAnnual']
-        dti =  request.form['dti']
-        fico =  request.form['fico']
-        creditLine =  request.form['creditLine']
-        revolvingBalance =  request.form['revolvingBalance']
-        revolvingUtilizationRate =  request.form['revolvingUtilizationRate']
-        inqLast6mths =  request.form['inqLast6mths']
-        delinq2yrs =  request.form['delinq2yrs']
-        pubRec =  request.form['pubRec']
-        loanAmount = request.form['loanAmount']
+    try:
 
 
-    df_loan = pd.read_csv('loan_data_new.csv')
 
-    with open('RFMODEL2','rb') as Model:
-        rfK = cPickle.load(Model)
+        mongo.db.resultsDB.remove()
 
-    df_loan = df_loan.append({'credit.policy': np.float32(creditPolicy), 
-                'purpose': purpose,
-                'int.rate': np.float32(interestRate) , 
-                'installment': np.float32(installment), 
-                'log.annual.inc': np.float32(logAnnual),
-                'dti': np.float32(dti), 
-                'fico': np.float32(fico),
-                'days.with.cr.line':np.float32(creditLine),
-                'revol.bal': np.float32(revolvingBalance), 
-                'revol.util': np.float32(revolvingUtilizationRate),
-                'inq.last.6mths': np.float32(inqLast6mths), 
-                'delinq.2yrs': np.float32(delinq2yrs), 
-                'pub.rec': np.float32(pubRec), 
-                'not.fully.paid': 1 # constant value
-                            },ignore_index=True)
-
-    results = {}
-
-    results['loanAmount'] = loanAmount
-
-    results['vector'] = pd.get_dummies(df_loan.drop('not.fully.paid',axis=1)).iloc[-1:].to_dict('records')
-
-    x = pd.get_dummies(df_loan.drop('not.fully.paid',axis=1))
-
-    xVector = x.iloc[-1:]
-
-    results['prediction'] = rfK.predict(xVector).item()
-
-    mongo.db.resultsDB.insert({"vectorsANDPREDICT": results}, check_keys = False)
+        if request.method == "POST":
+            creditPolicy = request.form['creditPolicy']
+            purpose =  request.form['purpose']
+            interestRate  =  request.form['interestRate']
+            installment =  request.form['installment']
+            logAnnual =  request.form['logAnnual']
+            dti =  request.form['dti']
+            fico =  request.form['fico']
+            creditLine =  request.form['creditLine']
+            revolvingBalance =  request.form['revolvingBalance']
+            revolvingUtilizationRate =  request.form['revolvingUtilizationRate']
+            inqLast6mths =  request.form['inqLast6mths']
+            delinq2yrs =  request.form['delinq2yrs']
+            pubRec =  request.form['pubRec']
+            loanAmount = request.form['loanAmount']
 
 
-    return redirect('/', code=302) 
+        df_loan = pd.read_csv('loan_data_new.csv')
+
+        with open('RFMODEL2','rb') as Model:
+            rfK = cPickle.load(Model)
+
+        df_loan = df_loan.append({'credit.policy': np.float32(creditPolicy), 
+                    'purpose': purpose,
+                    'int.rate': np.float32(interestRate) , 
+                    'installment': np.float32(installment), 
+                    'log.annual.inc': np.float32(logAnnual),
+                    'dti': np.float32(dti), 
+                    'fico': np.float32(fico),
+                    'days.with.cr.line':np.float32(creditLine),
+                    'revol.bal': np.float32(revolvingBalance), 
+                    'revol.util': np.float32(revolvingUtilizationRate),
+                    'inq.last.6mths': np.float32(inqLast6mths), 
+                    'delinq.2yrs': np.float32(delinq2yrs), 
+                    'pub.rec': np.float32(pubRec), 
+                    'not.fully.paid': 1 # constant value
+                                },ignore_index=True)
+
+        results = {}
+
+        results['loanAmount'] = loanAmount
+
+        results['vector'] = pd.get_dummies(df_loan.drop('not.fully.paid',axis=1)).iloc[-1:].to_dict('records')
+
+        x = pd.get_dummies(df_loan.drop('not.fully.paid',axis=1))
+
+        xVector = x.iloc[-1:]
+
+        results['prediction'] = rfK.predict(xVector).item()
+
+        mongo.db.resultsDB.insert({"vectorsANDPREDICT": results}, check_keys = False)
+
+
+        return redirect('/', code=302) 
+
+    except:
+
+        return "Please enter valid information"
+
+        
 
 
 

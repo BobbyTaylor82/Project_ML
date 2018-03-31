@@ -244,6 +244,11 @@
 
             var loanAMOUNT = data[0]["vectorsANDPREDICT"]["loanAmount"]
 
+            while ( loanAMOUNT >= 40000) { 
+                loanAMOUNT = prompt("Please Enter value up to 40k");
+
+            };
+
             var formatter = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
@@ -260,7 +265,7 @@
                     "Try again if borrower qualify for a lower loan amount.")
             } else {
                 alert("APPROVED for " + loanAMOUNT + "!")
-            }
+            };
 
 
 
