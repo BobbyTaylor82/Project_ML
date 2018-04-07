@@ -46,7 +46,7 @@ CSV File Meta Data:
 
 **pub.rec** -  borrower’s number of  “bad” records (bankruptcy, tax liens orjudgments) 
 
-**not.fully.paid**  - 1if borrower did not fully paid, 0 if otherwise
+**not.fully.paid**  - 1 if borrower did not fully paid, 0 if otherwise
 
 
 
