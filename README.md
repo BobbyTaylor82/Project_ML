@@ -6,7 +6,7 @@ Lender Bender
 
  
 
-Lending Club is a company that helps borrowers and investorsaccess credit. This project will use public data from LendingClub.com topredict the probability of a borrower paying back a loan in full to determinewhether they qualify for a loan. We will use machine learning to determine theprobability and find correlations of given parameters.
+Lending Club is a company that helps borrowers and investors access credit. This project will use public data from LendingClub.com topredict the probability of a borrower paying back a loan in full to determinewhether they qualify for a loan. We will use machine learning to determine theprobability and find correlations of given parameters.
 
 ![GitHub Logo](images/cash.jpg)
 
